@@ -13,10 +13,32 @@ body {
   padding: 4px 12px;
   color: gold;
   border: 12px solid rgb(230, 226, 226);
+  margin: 0;
 }
 
 i {
   margin-left: 2px;
+}
+
+#gogogo2 {
+  margin: 2rem;
+  height: 9rem;
+  width: 17rem;
+  border-radius: 45px 45px 45px 45px;
+  background-color: tomato;
+  border: 12px solid white;
+  font-family: 'Ultra', serif;
+  color: gold;
+}
+
+#gogogo2:hover {
+  background-color: rgb(241, 135, 116);
+  border: 12px solid gold;
+  cursor: pointer;
+}
+#gogogo2:active {
+  background-color: rgb(202, 139, 128);
+  color: rgb(211, 205, 172);
 }
 
 .balance-area {
