@@ -1,0 +1,23 @@
+{
+  "name": "slot-machine-murad-eminov",
+  "version": "1.0.0",
+  "description": "Slot machine app in HTML5, JS, and CSS",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuradEminov/slot-machine.git"
+  },
+  "keywords": [
+    "slot-machine",
+    "js"
+  ],
+  "author": "Murad Eminov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuradEminov/slot-machine/issues"
+  },
+  "homepage": "https://github.com/MuradEminov/slot-machine#readme"
+}

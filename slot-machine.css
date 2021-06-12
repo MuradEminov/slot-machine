@@ -2,6 +2,34 @@ body {
   background-color: rgb(200, 155, 243);
 }
 
+.navbar {
+  min-height: 8vh;
+  background-color: blueviolet;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Ultra', serif;
+  padding: 4px 12px;
+  color: gold;
+  border: 12px solid rgb(230, 226, 226);
+}
+
+i {
+  margin-left: 2px;
+}
+
+.balance-area {
+  margin-top: 70px;
+  background-color: rgb(207, 182, 230);
+  height: 45vh;
+  border-radius: 25px 25px 0 0;
+}
+
+.navbar img {
+  height: 24px;
+}
+
 .ezslots > .window {
   overflow: hidden;
   display: inline-block;
@@ -20,4 +48,10 @@ body {
 
 .slot-indicator {
   text-align: center;
+}
+
+.window {
+  font-size: 40px;
+  font-family: arial, helvetica, sans-serif;
+  border: 12px solid rgb(230, 226, 226);
 }
