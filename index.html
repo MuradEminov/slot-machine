@@ -1,79 +1,94 @@
 <body>
-<script src="jquery-1.11.3.js"></script>
-<script src="jquery.easing.1.3.js"></script>
-<script src="ezslots.js"></script>
-<link href="slot-machine.css" rel="stylesheet" type="text/css" />
-<script src="https://kit.fontawesome.com/5ddb0a9ef6.js" crossorigin="anonymous"></script> 
-<style>
-	@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+	<script src="jquery-1.11.3.js"></script>
+	<script src="jquery.easing.1.3.js"></script>
+	<script src="ezslots.js"></script>
+	<link href="slot-machine.css" rel="stylesheet" type="text/css" />
+	<script src="https://kit.fontawesome.com/5ddb0a9ef6.js" crossorigin="anonymous"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&family=Ultra&display=swap');
 	</style>
 
-<!-- HTML THAT RENDERS TO THE DOM -->
 
-<div class="navbar" > <h1>PAY TABLE</h1> <i class="fas fa-star"></i>  <ul>
-	<li>3 X <img src="./images/Cherry.png" alt="Cherry"> on top =2000 <i class="fas fa-dollar-sign"></i> </li>
-	<li>3 X <img src="./images/Cherry.png" alt="Cherry"> on center =1000 <i class="fas fa-dollar-sign"></i> </li>
-	<li>3 X <img src="./images/Cherry.png" alt="Cherry"> on bottom =4000 <i class="fas fa-dollar-sign"></i> </li>
-	<li>3 X <img src="./images/7.png" alt="7"> on any line =75 <i class="fas fa-dollar-sign"></i> </li>
-</ul>
-<i class="fas fa-star"></i>
-<ul>
-	<li>Any <img src="./images/Cherry.png" alt="Cherry"> and <img src="./images//7.png" alt="Seven"> on any line =75 <i class="fas fa-dollar-sign"></i> </li>
-	<li>3 X <img src="./images/3xBAR.png" alt="3xbar"> on any line =50 <i class="fas fa-dollar-sign"></i> </li>
-	<li>3 X <img src="./images/2xBAR.png" alt="2xbar"> on any line =20 <i class="fas fa-dollar-sign"></i> </li>
-	<li>3 X <img src="./images/bar.png" alt="bar"> on any line =10 <i class="fas fa-dollar-sign"></i> </li>
-	<li>Combination of any <img src="./images/bar.png" alt="bar"> on any line =5 <i class="fas fa-dollar-sign"></i> </li>
-</ul>
-</div>
-<div class="slot-indicator"> 
-<div id="ezslots2"></div>
-<button id="gogogo2"><h2>S P I N</h2></button>
-<button id="winwinwin2">WIN</button></div> 
+	<!-- HTML THAT RENDERS TO THE DOM -->
 
-<div class="balance-area">
-	 
-</div>
-
-<!-- END OF HTML -->
- 
-
-
-<script>
-
-$(function(){
-	//setting up some sample set sof things we can make a slot machine of
-	var numbers = ['0','1','2','3','4','5','6','7','8','9'];
-	var images = ['<img src="images/3xBAR.png">','<img src="images/bar.png">','<img src="images/2xBAR.png">','<img src="images/7.png">','<img src="images/Cherry.png">'];
-	var misc = ['!','K','*','#','@','$'];
-	var callbackFunction = function(result){
-		alert(JSON.stringify(result)); 
-		console.log(result);
-	}
+	<div class="navbar">
+		<h1>PAY TABLE</h1> <i class="fas fa-star"></i>
+		<ul>
+			<li>3 X <img src="./images/Cherry.png" alt="Cherry"> on top =2000 <i class="fas fa-dollar-sign"></i> </li>
+			<li>3 X <img src="./images/Cherry.png" alt="Cherry"> on center =1000 <i class="fas fa-dollar-sign"></i>
+			</li>
+			<li>3 X <img src="./images/Cherry.png" alt="Cherry"> on bottom =4000 <i class="fas fa-dollar-sign"></i>
+			</li>
+			<li>3 X <img src="./images/7.png" alt="7"> on any line =75 <i class="fas fa-dollar-sign"></i> </li>
+		</ul>
+		<i class="fas fa-star"></i>
+		<ul>
+			<li>Any <img src="./images/Cherry.png" alt="Cherry"> and <img src="./images//7.png" alt="Seven"> on any line
+				=75 <i class="fas fa-dollar-sign"></i> </li>
+			<li>3 X <img src="./images/3xBAR.png" alt="3xbar"> on any line =50 <i class="fas fa-dollar-sign"></i> </li>
+			<li>3 X <img src="./images/2xBAR.png" alt="2xbar"> on any line =20 <i class="fas fa-dollar-sign"></i> </li>
+			<li>3 X <img src="./images/bar.png" alt="bar"> on any line =10 <i class="fas fa-dollar-sign"></i> </li>
+			<li>Combination of any <img src="./images/bar.png" alt="bar"> on any line =5 <i
+					class="fas fa-dollar-sign"></i> </li>
+		</ul>
+	</div>
+	<div class="slot-indicator">
+		<div id="ezslots2"></div>
+		<button id="gogogo2">
+			<h2>S P I N</h2>
+		</button>
+		<button id="winwinwin2">WIN</button>
+	</div> 
+	<div class="info-box">
+		<i class="fas fa-arrow-up" style="color: green;"></i>
+		<h1 id="spin-info-text">GO SPIN!</h1>
+	</div>
 
 
-	//all parameters except id are optional
-	var ezslot0 = new EZSlots("ezslots0");
-	//simple numbers based one
-	var ezslot1 = new EZSlots("ezslots1",{"reelCount":3,"startingSet":[0,0,0],"winningSet":[7,7,7],"symbols":numbers,"height":126,"width":126});
-	//using images instead, and more reels
-	var ezslot2 = new EZSlots("ezslots2",{"reelCount":4,"winningSet":[0,0,0,0],"symbols":images,"height":126,"width":126});
-	//mixed types for each reel
-	var ezslot3 = new EZSlots("ezslots3",{"reelCount":3,"winningSet":[0,0,0],"symbols":[numbers,images,misc],"height":126,"width":126, "callback":callbackFunction});
-	//simple numbers based one but takes longer to settle
-	var ezslot4 = new EZSlots("ezslots4",{"time":20,"reelCount":3,"startingSet":[0,0,0],"winningSet":[7,7,7],"symbols":numbers,"height":126,"width":126});
+	<div class="balance-area">
+
+	</div>
+
+	<!-- END OF HTML -->
 
 
-	$("#gogogo0").click(function(){ console.log(ezslot0.spin());});
-	$("#gogogo1").click(function(){ console.log(ezslot1.spin());});
-	$("#winwinwin1").click(function(){ console.log(ezslot1.win())});
-	$("#gogogo2").click(function(){ console.log(ezslot2.spin());});
-	$("#winwinwin2").click(function(){ console.log(ezslot2.win())});
-	$("#gogogo3").click(function(){ console.log(ezslot3.spin());});
-	$("#winwinwin3").click(function(){ console.log(ezslot3.win())});
-	$("#gogogo4").click(function(){ console.log(ezslot4.spin());});
-	$("#winwinwin4").click(function(){ console.log(ezslot4.win())});
-});
 
-</script>
+	<script>
+
+		$(function () {
+			//setting up some sample set sof things we can make a slot machine of
+			var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+			var images = ['<img src="images/3xBAR.png">', '<img src="images/bar.png">', '<img src="images/2xBAR.png">', '<img src="images/7.png">', '<img src="images/Cherry.png">'];
+			var misc = ['!', 'K', '*', '#', '@', '$'];
+			var callbackFunction = function (result) {
+				alert(JSON.stringify(result));
+				console.log(result);
+			}
+
+
+			//all parameters except id are optional
+			var ezslot0 = new EZSlots("ezslots0");
+			//simple numbers based one
+			var ezslot1 = new EZSlots("ezslots1", { "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
+			//using images instead, and more reels
+			var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": [0, 0, 0, 0], "Time": 2, "symbols": images, "height": 126, "width": 126 });
+			//mixed types for each reel
+			var ezslot3 = new EZSlots("ezslots3", { "reelCount": 3, "winningSet": [0, 0, 0], "symbols": [numbers, images, misc], "height": 126, "width": 126, "callback": callbackFunction });
+			//simple numbers based one but takes longer to settle
+			var ezslot4 = new EZSlots("ezslots4", { "time": 20, "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
+
+
+			$("#gogogo0").click(function () { console.log(ezslot0.spin()); });
+			$("#gogogo1").click(function () { console.log(ezslot1.spin()); });
+			$("#winwinwin1").click(function () { console.log(ezslot1.win()) });
+			$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <==
+			$("#winwinwin2").click(function () { console.log(ezslot2.win()) });
+			$("#gogogo3").click(function () { console.log(ezslot3.spin()); });
+			$("#winwinwin3").click(function () { console.log(ezslot3.win()) });
+			$("#gogogo4").click(function () { console.log(ezslot4.spin()); });
+			$("#winwinwin4").click(function () { console.log(ezslot4.win()) });
+		});
+
+	</script>
 
 </body>
