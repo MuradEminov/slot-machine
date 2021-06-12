@@ -5,18 +5,16 @@
 <link href="slot-machine.css" rel="stylesheet" type="text/css" />
 
 <style>
-body{
-	background-color:white;
-}
+ 
 .window {
 	font-size:40px;
 	font-family:arial,helvetica,sans-serif;	
-	border:1px solid black;
+	border:12px solid rgb(230, 226, 226);
 }
 
 </style>
   
-<div><h1>Slot-Machine</h1>
+<div class="slot-indicator"><h1>Slot-Machine</h1>
 <div id="ezslots2"></div>
 <button id="gogogo2">spin</button>
 <button id="winwinwin2">win</button></div>
@@ -30,10 +28,11 @@ body{
 $(function(){
 	//setting up some sample set sof things we can make a slot machine of
 	var numbers = ['0','1','2','3','4','5','6','7','8','9'];
-	var images = ['<img src="images/seven.png">','<img src="images/banana.png">','<img src="images/cherries.png">','<img src="images/lemon.png">','<img src="images/orange.png">','<img src="images/plum.png">','<img src="images/watermelon.png">'];
+	var images = ['<img src="images/3xBAR.png">','<img src="images/bar.png">','<img src="images/2xBAR.png">','<img src="images/7.png">','<img src="images/Cherry.png">'];
 	var misc = ['!','K','*','#','@','$'];
 	var callbackFunction = function(result){
-		alert(JSON.stringify(result));
+		alert(JSON.stringify(result)); 
+		console.log(result);
 	}
 
 
