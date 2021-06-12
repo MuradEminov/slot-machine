@@ -79,10 +79,12 @@ i {
 
 .info-box {
   text-align: center;
+  margin: 0;
 }
 
 .info-box h1 {
   color: rgb(220, 247, 233);
+  padding: 0;
 }
 
 .window {

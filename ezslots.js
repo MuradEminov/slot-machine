@@ -93,9 +93,12 @@ function EZSlots(id, useroptions) {
     var btnStatus = document.getElementById('gogogo2');
     btnStatus.disabled = true;
     document.getElementById('spin-info-text').innerHTML = 'Wait spin to end!';
+    var audio = new Audio('../assets/audio/slot-machine-sound-effect.mp3');
+    audio.play();
     setTimeout(() => {
       btnStatus.disabled = false;
       document.getElementById('spin-info-text').innerHTML = 'GO SPIN!';
+      audio.pause();
     }, 7000); // set Spin button disability duration (in millisecs)
 
     // End of Spin button management
