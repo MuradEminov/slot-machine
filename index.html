@@ -34,7 +34,7 @@
 	</div>
 	<div class="slot-indicator">
 		<div id="ezslots2"></div>
-		<button id="gogogo2">
+		<button id="gogogo2" onclick="reduceBalance()">
 			<h2>S P I N</h2>
 		</button>
 		<button id="winwinwin2">WIN</button>
@@ -94,16 +94,33 @@
 			$("#gogogo4").click(function () { console.log(ezslot4.spin()); });
 			$("#winwinwin4").click(function () { console.log(ezslot4.win()) });
 
-			/* HANDLE BALANCE RELATED ISSUES: */
+			/* HANDLE BALANCE RELATED ISSUES: */ 
+			
+			// Spin button behavious based upon balance: 
+			
 			var balance = document.querySelector('#balanceInput');
 			if (balance.value == 0) {
 				var spinBtn = document.getElementById('gogogo2');
 				var infoText = document.getElementById('spin-info-text');
 				spinBtn.disabled = true;
 				infoText.innerHTML = 'Please, insert money to start.';
-			}
-			/* End of HANDLE BALANCE RELATED ISSUES: */
-		});
+			} 
+
+			// -1 coin for each spin roll: 
+			 
+			$("#gogogo2").click(
+		// 		function () { 
+		// 		// var balance = document.querySelector('#balanceInput');
+				
+		// 		// balance.value = balance.value-1;});
+
+
+
+
+		// 	/* End of HANDLE BALANCE RELATED ISSUES: */
+		// }
+		  handleChange();
+		);
 
 
 
