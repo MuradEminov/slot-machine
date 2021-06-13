@@ -8,6 +8,9 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&family=Ultra&display=swap');
 	</style>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
+	</style>
 
 
 	<!-- HTML THAT RENDERS TO THE DOM -->
@@ -103,7 +106,7 @@
 			var spinBtn = document.getElementById('gogogo2');
 			var infoText = document.getElementById('spin-info-text');
 			if (balance.value == 0) {
-				
+
 				spinBtn.disabled = true;
 				infoText.innerHTML = 'Please, insert money to start.';
 			}
@@ -115,9 +118,9 @@
 				if (balance.value == 0) {
 					spinBtn.disabled = true;
 					infoTexnerHTML = 'Please, insert money to stat.';
-				} 
-				else{balance.value = balance.value - 1;}
-				
+				}
+				else { balance.value = balance.value - 1; }
+
 
 			});
 
