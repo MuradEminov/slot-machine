@@ -8,7 +8,7 @@ function handleChange(balance) {
   }
   if (balance > 5000) {
     infoText.innerHTML =
-      'NO MORE THAN 5000$ IS ALLOWED TO ENTER' + '(ENTER LESS MONEY)';
+      'NO MORE THAN 5000$ IS ALLOWED TO ENTER  (ENTER LESS MONEY)';
     spinBtn.disabled = true;
   }
 }

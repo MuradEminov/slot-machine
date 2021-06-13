@@ -108,19 +108,17 @@
 
 			// -1 coin for each spin roll: 
 			 
-			$("#gogogo2").click(
-		// 		function () { 
-		// 		// var balance = document.querySelector('#balanceInput');
-				
-		// 		// balance.value = balance.value-1;});
+			$("#gogogo2").click(function () { 
+				var balance = document.querySelector('#balanceInput');
+				if(balance.value==0){
+					spinBtn.disabled = true;
+                    infoText.innerHTML = 'ENTER MONEY FROM 0 TO 5000(MAX) TO START';
+				}
+				balance.value = balance.value-1;});
 
 
-
-
-		// 	/* End of HANDLE BALANCE RELATED ISSUES: */
-		// }
-		  handleChange();
-		);
+			/* End of HANDLE BALANCE RELATED ISSUES: */
+		});
 
 
 
