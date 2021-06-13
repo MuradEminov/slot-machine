@@ -96,7 +96,7 @@
 
 			/* HANDLE BALANCE RELATED ISSUES: */
 			var balance = document.querySelector('#balanceInput');
-			if (balance.value == 0) {
+			if (balance.value <= 0) {
 				var spinBtn = document.getElementById('gogogo2');
 				var infoText = document.getElementById('spin-info-text');
 				spinBtn.disabled = true;
