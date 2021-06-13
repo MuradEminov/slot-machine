@@ -50,7 +50,8 @@
 			<div>
 				<p><i class="fas fa-coins"></i>BALANCE: </p>
 			</div>
-			<div id="box"><input id="balanceInput" type="number" max="5000" min="1" value="0" onchange="handleChange(this.value)"></div>
+			<div id="box"><input id="balanceInput" type="number" max="5000" min="1" value="0"
+					onchange="handleChange(this.value)"></div>
 		</div>
 	</div>
 
@@ -94,27 +95,31 @@
 			$("#gogogo4").click(function () { console.log(ezslot4.spin()); });
 			$("#winwinwin4").click(function () { console.log(ezslot4.win()) });
 
-			/* HANDLE BALANCE RELATED ISSUES: */ 
-			
+			/* HANDLE BALANCE RELATED ISSUES: */
+
 			// Spin button behavious based upon balance: 
-			
+
 			var balance = document.querySelector('#balanceInput');
+			var spinBtn = document.getElementById('gogogo2');
+			var infoText = document.getElementById('spin-info-text');
 			if (balance.value == 0) {
-				var spinBtn = document.getElementById('gogogo2');
-				var infoText = document.getElementById('spin-info-text');
+				
 				spinBtn.disabled = true;
 				infoText.innerHTML = 'Please, insert money to start.';
-			} 
+			}
 
 			// -1 coin for each spin roll: 
-			 
-			$("#gogogo2").click(function () { 
-				var balance = document.querySelector('#balanceInput');
-				if(balance.value==0){
+
+			$("#gogogo2").click(function () {
+				// var balance = document.querySelector('#balanceInput');
+				if (balance.value == 0) {
 					spinBtn.disabled = true;
-                    infoText.innerHTML = 'ENTER MONEY FROM 0 TO 5000(MAX) TO START';
-				}
-				balance.value = balance.value-1;});
+					infoTexnerHTML = 'Please, insert money to stat.';
+				} 
+				else{balance.value = balance.value - 1;}
+				
+
+			});
 
 
 			/* End of HANDLE BALANCE RELATED ISSUES: */

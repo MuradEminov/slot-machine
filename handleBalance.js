@@ -12,8 +12,3 @@ function handleChange(balance) {
     spinBtn.disabled = true;
   }
 }
-
-if (balance == 0) {
-  spinBtn.disabled = true;
-  infoText.innerHTML = 'ENTER MONEY FROM 0 TO 5000(MAX) TO START';
-}
