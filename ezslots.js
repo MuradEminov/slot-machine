@@ -89,7 +89,7 @@ function EZSlots(id, useroptions) {
   };
 
   this.spinAll = function (shouldWin) {
-    //   Manage Spin button enabled/disabled status
+    /*   Manage Spin button enabled/disabled status */
     var btnStatus = document.getElementById('gogogo2');
     btnStatus.disabled = true;
     document.getElementById('spin-info-text').innerHTML = 'Wait spin to end!';
@@ -101,7 +101,7 @@ function EZSlots(id, useroptions) {
       audio.pause();
     }, 7000); // set Spin button disability duration (in millisecs)
 
-    // End of Spin button management
+    /* End of Manage Spin button enabled/disabled status */
 
     var results = [];
     for (var i = 0; i < that.reelCount; i++) {

@@ -42,10 +42,38 @@ i {
 }
 
 .balance-area {
-  margin-top: 70px;
+  margin-top: 10px;
   background-color: rgb(207, 182, 230);
   height: 45vh;
   border-radius: 25px 25px 0 0;
+}
+
+.balance-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 6px 8px;
+  padding: 14px;
+  font-family: 'Ultra', serif;
+  font-size: 2rem;
+  color: rgb(71, 95, 199);
+}
+
+.balance-box #box {
+  height: 2rem;
+  width: 20rem;
+  border: 9px solid rgb(71, 95, 199);
+  background-color: rgb(48, 29, 29);
+}
+
+.balance-box input {
+  height: 2rem;
+  width: 20rem;
+  outline: none;
+  direction: rtl;
+  background-color: black;
+  color: green;
+  font-size: 2rem;
 }
 
 .navbar img {
@@ -85,6 +113,12 @@ i {
 .info-box h1 {
   color: rgb(220, 247, 233);
   padding: 0;
+  margin: 0;
+}
+
+.info-box i {
+  padding: 0;
+  margin: 0;
 }
 
 .window {
