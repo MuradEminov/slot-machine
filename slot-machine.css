@@ -127,3 +127,14 @@ i {
   font-family: arial, helvetica, sans-serif;
   border: 12px solid rgb(230, 226, 226);
 }
+
+#winBox {
+  color: rgb(250, 68, 36);
+}
+
+.balance-box #box-2 {
+  height: 2rem;
+  width: 20rem;
+  border: 9px solid rgb(71, 95, 199);
+  background-color: rgb(48, 29, 29);
+}

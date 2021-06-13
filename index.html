@@ -54,82 +54,88 @@
 				<p><i class="fas fa-coins"></i>BALANCE: </p>
 			</div>
 			<div id="box"><input id="balanceInput" type="number" max="5000" min="1" value="0"
-					onchange="handleChange(this.value)"></div>
+					onchange="handleChange(this.value)"></div><i class="fas fa-dollar-sign"></i>
+
+			<div id="winBox" style="margin-left: 2rem;">
+				<p><i class="fas fa-trophy"></i>LAST WON: </p>
+			</div>
+			<div id="box-2">
+					  
+			</div>
 		</div>
-	</div>
 
-	<!-- END OF HTML -->
-
+		<!-- END OF HTML -->
 
 
-	<script>
 
-		$(function () {
+		<script>
 
-			//setting up some sample set sof things we can make a slot machine of
-			var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-			var images = ['<img src="images/3xBAR.png">', '<img src="images/bar.png">', '<img src="images/2xBAR.png">', '<img src="images/7.png">', '<img src="images/Cherry.png">'];
-			var misc = ['!', 'K', '*', '#', '@', '$'];
-			var callbackFunction = function (result) {
-				alert(JSON.stringify(result));
-				console.log(result);
-			}
+			$(function () {
 
-
-			//all parameters except id are optional
-			var ezslot0 = new EZSlots("ezslots0");
-			//simple numbers based one
-			var ezslot1 = new EZSlots("ezslots1", { "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
-			//using images instead, and more reels
-			var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": [0, 0, 0, 0], "Time": 2, "symbols": images, "height": 126, "width": 126 });
-			//mixed types for each reel
-			var ezslot3 = new EZSlots("ezslots3", { "reelCount": 3, "winningSet": [0, 0, 0], "symbols": [numbers, images, misc], "height": 126, "width": 126, "callback": callbackFunction });
-			//simple numbers based one but takes longer to settle
-			var ezslot4 = new EZSlots("ezslots4", { "time": 20, "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
-
-
-			$("#gogogo0").click(function () { console.log(ezslot0.spin()); });
-			$("#gogogo1").click(function () { console.log(ezslot1.spin()); });
-			$("#winwinwin1").click(function () { console.log(ezslot1.win()) });
-			$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <-Slot machine with Images
-			$("#winwinwin2").click(function () { console.log(ezslot2.win()) });
-			$("#gogogo3").click(function () { console.log(ezslot3.spin()); });
-			$("#winwinwin3").click(function () { console.log(ezslot3.win()) });
-			$("#gogogo4").click(function () { console.log(ezslot4.spin()); });
-			$("#winwinwin4").click(function () { console.log(ezslot4.win()) });
-
-			/* HANDLE BALANCE RELATED ISSUES: */
-
-			// Spin button behavious based upon balance: 
-
-			var balance = document.querySelector('#balanceInput');
-			var spinBtn = document.getElementById('gogogo2');
-			var infoText = document.getElementById('spin-info-text');
-			if (balance.value == 0) {
-
-				spinBtn.disabled = true;
-				infoText.innerHTML = 'Please, insert money to start.';
-			}
-
-			// -1 coin for each spin roll: 
-
-			$("#gogogo2").click(function () {
-				// var balance = document.querySelector('#balanceInput');
-				if (balance.value == 0) {
-					spinBtn.disabled = true;
-					infoTexnerHTML = 'Please, insert money to stat.';
+				//setting up some sample set sof things we can make a slot machine of
+				var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+				var images = ['<img src="images/3xBAR.png">', '<img src="images/bar.png">', '<img src="images/2xBAR.png">', '<img src="images/7.png">', '<img src="images/Cherry.png">'];
+				var misc = ['!', 'K', '*', '#', '@', '$'];
+				var callbackFunction = function (result) {
+					alert(JSON.stringify(result));
+					console.log(result);
 				}
-				else { balance.value = balance.value - 1; }
 
 
+				//all parameters except id are optional
+				var ezslot0 = new EZSlots("ezslots0");
+				//simple numbers based one
+				var ezslot1 = new EZSlots("ezslots1", { "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
+				//using images instead, and more reels
+				var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": [0, 0, 0, 0], "Time": 2, "symbols": images, "height": 126, "width": 126 });
+				//mixed types for each reel
+				var ezslot3 = new EZSlots("ezslots3", { "reelCount": 3, "winningSet": [0, 0, 0], "symbols": [numbers, images, misc], "height": 126, "width": 126, "callback": callbackFunction });
+				//simple numbers based one but takes longer to settle
+				var ezslot4 = new EZSlots("ezslots4", { "time": 20, "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
+
+
+				$("#gogogo0").click(function () { console.log(ezslot0.spin()); });
+				$("#gogogo1").click(function () { console.log(ezslot1.spin()); });
+				$("#winwinwin1").click(function () { console.log(ezslot1.win()) });
+				$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <-Slot machine with Images
+				$("#winwinwin2").click(function () { console.log(ezslot2.win()) });
+				$("#gogogo3").click(function () { console.log(ezslot3.spin()); });
+				$("#winwinwin3").click(function () { console.log(ezslot3.win()) });
+				$("#gogogo4").click(function () { console.log(ezslot4.spin()); });
+				$("#winwinwin4").click(function () { console.log(ezslot4.win()) });
+
+				/* HANDLE BALANCE RELATED ISSUES: */
+
+				// Spin button behavious based upon balance: 
+
+				var balance = document.querySelector('#balanceInput');
+				var spinBtn = document.getElementById('gogogo2');
+				var infoText = document.getElementById('spin-info-text');
+				if (balance.value == 0) {
+
+					spinBtn.disabled = true;
+					infoText.innerHTML = 'Please, insert money to start.';
+				}
+
+				// -1 coin for each spin roll: 
+
+				$("#gogogo2").click(function () {
+					// var balance = document.querySelector('#balanceInput');
+					if (balance.value == 0) {
+						spinBtn.disabled = true;
+						infoTexnerHTML = 'Please, insert money to stat.';
+					}
+					else { balance.value = balance.value - 1; }
+
+
+				});
+
+
+				/* End of HANDLE BALANCE RELATED ISSUES: */
 			});
 
 
-			/* End of HANDLE BALANCE RELATED ISSUES: */
-		});
 
-
-
-	</script>
+		</script>
 
 </body>
