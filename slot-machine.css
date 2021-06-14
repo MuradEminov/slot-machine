@@ -70,7 +70,7 @@ i {
   height: 2rem;
   width: 20rem;
   outline: none;
-  direction: rtl;
+  direction: ltr;
   background-color: black;
   color: green;
   font-size: 2rem;

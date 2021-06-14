@@ -99,7 +99,7 @@ function EZSlots(id, useroptions) {
       btnStatus.disabled = false;
       document.getElementById('spin-info-text').innerHTML = 'GO SPIN!';
       audio.pause();
-    }, 7000); // set Spin button disability duration (in millisecs)
+    }, 7000); // set S P I N button disability duration (in millisecs)
 
     /* End of Manage Spin button enabled/disabled status */
 
