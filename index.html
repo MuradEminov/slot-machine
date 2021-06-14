@@ -45,7 +45,7 @@
 		<button id="gogogo2">
 			<h2>S P I N</h2>
 		</button>
-		
+
 	</div>
 	<div class="info-box">
 		<i class="fas fa-arrow-up" style="color: green;"></i>
@@ -68,18 +68,19 @@
 			<div id="box-2">
 
 			</div><i class="fas fa-dollar-sign"></i>
-		</div> 
+		</div>
 
-		<div class="debugger-box"> 
+		<div class="debugger-box">
 			<p>SELECT AN IMAGE FOR FIXED WIN DEBUG:</p>
-			<div class="container"> 
-			  <img src="./images/2xBAR.png" alt="2xBAR" onclick="setImgSrc('./images/2xBAR.png')">
-			  <img src="./images/3xBAR.png" alt="3xBAR" onclick="setImgSrc('./images/3xBAR.png')">
-			  <img src="./images/7.png" alt="Seven" onclick="setImgSrc('./images/7.png')">
-			  <img src="./images/bar.png" alt="BAR" onclick="setImgSrc('./images/bar.png')">
-			  <img src="./images/Cherry.png" alt="Cherry"onclick="setImgSrc('./images/Cherry.png')">
-			</div>  
-			 <p>SELECTION: </p> <div id="selectionBox"></div>
+			<div class="container">
+				<img src="./images/2xBAR.png" alt="2xBAR" onclick="setImgSrc('./images/2xBAR.png')">
+				<img src="./images/3xBAR.png" alt="3xBAR" onclick="setImgSrc('./images/3xBAR.png')">
+				<img src="./images/7.png" alt="Seven" onclick="setImgSrc('./images/7.png')">
+				<img src="./images/bar.png" alt="BAR" onclick="setImgSrc('./images/bar.png')">
+				<img src="./images/Cherry.png" alt="Cherry" onclick="setImgSrc('./images/Cherry.png')">
+			</div>
+			<p>SELECTION: </p>
+			<div id="selectionBox"></div>
 			<button id="winwinwin2">WIN</button>
 
 		</div>
@@ -89,28 +90,22 @@
 	<!-- End of BALANCE AREA -->
 	<!-- END OF HTML -->
 
-	<script> 
+	<script>
 
 
-			/* HANDLE DEBUGGER FIXED WINS */  
-			 
-			var img = document.createElement("img"); 
-			img.src = './images/7.png';
-			document.getElementById('selectionBox').append(img); 
-				
-			function setImgSrc(src){   
-					 
-					// document.getElementById('selectionBox').remove(img); 
-					// // var newImg = document.createElement("img"); 
-					// // newImg.src = src; 
-					// // document.getElementById('selectionBox').append(newImg); 
-					
-					// img.src=src; 
-					// document.getElementById('selectionBox').append(img);  
-					img.src = src;
+		/* HANDLE DEBUGGER FIXED WINS */
 
-					console.log(src); 
-				}
+		var img = document.createElement("img");
+		img.src = './images/7.png';
+		document.getElementById('selectionBox').append(img);
+
+		function setImgSrc(src) {
+
+
+			img.src = src;
+
+			console.log(src);
+		}
 
 
 
@@ -174,7 +169,7 @@
 					lastWin.innerHTML = "+5";
 				}
 
-			
+
 
 				console.log(result);
 
