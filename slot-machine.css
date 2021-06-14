@@ -129,7 +129,7 @@ i {
 }
 
 #winBox {
-  color: rgb(250, 68, 36);
+  color: gold;
 }
 
 .balance-box #box-2 {
@@ -137,4 +137,8 @@ i {
   width: 20rem;
   border: 9px solid rgb(71, 95, 199);
   background-color: rgb(48, 29, 29);
+  color: gold;
+  font-size: 2rem;
+  padding: 2px;
+  font-family: 'Ultra', serif;
 }
