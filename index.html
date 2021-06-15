@@ -81,7 +81,7 @@
 			</div>
 			<p>SELECTION: </p>
 			<div id="selectionBox"></div>
-			<button id="winwinwin2">WIN</button>
+			<button id="winwinwin2">W I N</button>
 
 		</div>
 
@@ -96,9 +96,9 @@
 		/* HANDLE DEBUGGER FIXED WINS */
 
 		var img = document.createElement("img");
-		img.src = './images/7.png'; // Default Image set for debugger winning mode  
+		img.src = './images/Cherry.png'; // Default Image set for debugger winning mode  
 		document.getElementById('selectionBox').append(img);
-		var winArr = [4, 4, 4];
+		var winArr = [4, 4, 4]; // The winning set array for debug spin option
 
 		function setImgSrc(src) {
 			img.src = src;
@@ -123,13 +123,13 @@
 					break;
 				case ('./images/2xBAR.png'):
 					console.log("bar");
-					winArr.splice(0, 3, 2, 2, 2); // Set 3XBAR combo as winning array set
+					winArr.splice(0, 3, 2, 2, 2); // Set 2XBAR combo as winning array set
 					break;
 
 			}
 		}
 
-
+		/* End of HANDLE DEBUGGER FIXED WINS */
 
 		$(function () {
 
