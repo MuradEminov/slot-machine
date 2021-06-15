@@ -96,15 +96,37 @@
 		/* HANDLE DEBUGGER FIXED WINS */
 
 		var img = document.createElement("img");
-		img.src = './images/7.png';
+		img.src = './images/7.png'; // Default Image set for debugger winning mode  
 		document.getElementById('selectionBox').append(img);
+		var winArr = [4, 4, 4];
 
 		function setImgSrc(src) {
-
-
 			img.src = src;
+			winSrc = src; // set new image source for debugge wins	 
+			console.log(winSrc);
+			switch (winSrc) {
+				case ('./images/Cherry.png'):
+					console.log('Cherry');
+					winArr.splice(0, 3, 4, 4, 4); // Set Cherry combo as winning array set
+					break;
+				case ('./images/bar.png'):
+					console.log("bar");
+					winArr.splice(0, 3, 1, 1, 1); // Set Bar combo as winning array set
+					break;
+				case ('./images/7.png'):
+					console.log("bar");
+					winArr.splice(0, 3, 3, 3, 3); // Set Seven combo as winning array set
+					break;
+				case ('./images/3xBAR.png'):
+					console.log("bar");
+					winArr.splice(0, 3, 0, 0, 0); // Set 3XBAR combo as winning array set
+					break;
+				case ('./images/2xBAR.png'):
+					console.log("bar");
+					winArr.splice(0, 3, 2, 2, 2); // Set 3XBAR combo as winning array set
+					break;
 
-			console.log(src);
+			}
 		}
 
 
@@ -182,7 +204,7 @@
 			//simple numbers based one
 			var ezslot1 = new EZSlots("ezslots1", { "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
 			//using images instead, and more reels
-			var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": [4, 4, 4], "time": 2, "symbols": images, "height": 126, "width": 126, "callback": callbackFunction });
+			var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": winArr, "time": 2, "symbols": images, "height": 126, "width": 126, "callback": callbackFunction });
 			//mixed types for each reel
 			var ezslot3 = new EZSlots("ezslots3", { "reelCount": 3, "winningSet": [0, 0, 0], "symbols": [numbers, images, misc], "height": 126, "width": 126, "callback": callbackFunction });
 			//simple numbers based one but takes longer to settle
@@ -192,7 +214,7 @@
 			$("#gogogo0").click(function () { console.log(ezslot0.spin()); });
 			$("#gogogo1").click(function () { console.log(ezslot1.spin()); });
 			$("#winwinwin1").click(function () { console.log(ezslot1.win()) });
-			$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <-Slot machine with Images
+			$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <-Slot machine with Images callback
 			$("#winwinwin2").click(function () { console.log(ezslot2.win()) });
 			$("#gogogo3").click(function () { console.log(ezslot3.spin()); });
 			$("#winwinwin3").click(function () { console.log(ezslot3.win()) });
@@ -201,7 +223,7 @@
 
 			/* HANDLE BALANCE RELATED ISSUES: */
 
-			// Spin button behavious based upon balance: 
+
 
 			var balance = document.querySelector('#balanceInput');
 			var spinBtn = document.getElementById('gogogo2');
@@ -211,7 +233,7 @@
 				spinBtn.disabled = true;
 				infoText.innerHTML = 'Please, insert money to start.';
 			}
-
+			// Spin button behavious based upon balance: 
 			// -1 coin for each spin roll: 
 
 			$("#gogogo2").click(function () {
