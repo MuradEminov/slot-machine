@@ -103,26 +103,21 @@
 		function setImgSrc(src) {
 			img.src = src;
 			winSrc = src; // set new image source for debugge wins	 
-			console.log(winSrc);
+			
 			switch (winSrc) {
 				case ('./images/Cherry.png'):
-					console.log('Cherry');
 					winArr.splice(0, 3, 4, 4, 4); // Set Cherry combo as winning array set
 					break;
 				case ('./images/bar.png'):
-					console.log("bar");
 					winArr.splice(0, 3, 1, 1, 1); // Set Bar combo as winning array set
 					break;
 				case ('./images/7.png'):
-					console.log("bar");
 					winArr.splice(0, 3, 3, 3, 3); // Set Seven combo as winning array set
 					break;
 				case ('./images/3xBAR.png'):
-					console.log("bar");
 					winArr.splice(0, 3, 0, 0, 0); // Set 3XBAR combo as winning array set
 					break;
 				case ('./images/2xBAR.png'):
-					console.log("bar");
 					winArr.splice(0, 3, 2, 2, 2); // Set 2XBAR combo as winning array set
 					break;
 
@@ -322,10 +317,7 @@
 					}, 700); // Stop playing in 1 sec
 				}
 
-
-
-
-				console.log(result);
+				 
 
 			}
 
