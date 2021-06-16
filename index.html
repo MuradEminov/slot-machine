@@ -143,7 +143,7 @@
 				var lastWin = document.getElementById('box-2');
 				var balanceNum = +balance.value; // balance as numeric value
 				var window = document.querySelectorAll('div.window.window_');	// get the reeling box 		 
-
+				var audioWin = new Audio('../assets/audio/slot_machine_win.mp3'); // winning audio sound 
 				/* ---- Give respective amounts to the winning sets ---*/
 
 				/* 1. If the set is 3 Cherries, give 1000$: */
@@ -151,7 +151,7 @@
 					balanceNum = balanceNum + 1000;
 					balance.value = JSON.stringify(balanceNum);
 					lastWin.innerHTML = "+1000";
-					
+
 					/* blink the background */
 					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
@@ -165,15 +165,21 @@
 
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays. 
 
+
+					audioWin.play(); // Play winning sound
+					setTimeout(() => {
+						audioWin.pause();
+					}, 1000); // Stop playing in 1 sec
+
 				}
 				/* 2. If the set is 3 Sevens, give 75$: */
 				if (resultString == '[3,3,3]') {
 					balanceNum = balanceNum + 75;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+75"; 
+					lastWin.innerHTML = "+75";
 
-						/* blink the background */
-						var interval = setInterval(function () {
+					/* blink the background */
+					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
 							this.switch = !this.switch
 							return this.switch ? "red" : ""
@@ -184,16 +190,19 @@
 					} 					 // function to stop the animation interval 
 
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
-
+					audioWin.play(); // Play winning sound
+					setTimeout(() => {
+						audioWin.pause();
+					}, 1000); // Stop playing in 1 sec   
 				}
 				/* 3. If the set contains any Cherry and any Seven, give 75$: */
 				if ((resultString.includes('4')) && (resultString.includes('3'))) {
 					balanceNum = balanceNum + 75;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+75"; 
+					lastWin.innerHTML = "+75";
 
-						/* blink the background */
-						var interval = setInterval(function () {
+					/* blink the background */
+					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
 							this.switch = !this.switch
 							return this.switch ? "red" : ""
@@ -205,14 +214,19 @@
 
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
 				}
+				audioWin.play(); // Play winning sound
+				setTimeout(() => {
+					audioWin.pause();
+				}, 1000); // Stop playing in 1 sec
+
 				/* 4. If the set is 3 3XBARs, give 50$: */
 				if (resultString == '[0,0,0]') {
 					balanceNum = balanceNum + 50;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+50"; 
+					lastWin.innerHTML = "+50";
 
-						/* blink the background */
-						var interval = setInterval(function () {
+					/* blink the background */
+					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
 							this.switch = !this.switch
 							return this.switch ? "red" : ""
@@ -224,14 +238,18 @@
 
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
 				}
+				audioWin.play(); // Play winning sound
+				setTimeout(() => {
+					audioWin.pause();
+				}, 1000); // Stop playing in 1 sec
 				/* 5. If the set is 3 2XBARs, give 20$: */
 				if (resultString == '[2,2,2]') {
 					balanceNum = balanceNum + 20;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+20"; 
+					lastWin.innerHTML = "+20";
 
-						/* blink the background */
-						var interval = setInterval(function () {
+					/* blink the background */
+					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
 							this.switch = !this.switch
 							return this.switch ? "red" : ""
@@ -243,14 +261,18 @@
 
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
 				}
+				audioWin.play(); // Play winning sound
+				setTimeout(() => {
+					audioWin.pause();
+				}, 1000); // Stop playing in 1 sec
 				/* 6. If the set is 3 BARs, give 10$: */
 				if (resultString == '[1,1,1]') {
 					balanceNum = balanceNum + 20;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+10"; 
+					lastWin.innerHTML = "+10";
 
-						/* blink the background */
-						var interval = setInterval(function () {
+					/* blink the background */
+					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
 							this.switch = !this.switch
 							return this.switch ? "red" : ""
@@ -262,14 +284,18 @@
 
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
 				}
+				audioWin.play(); // Play winning sound
+				setTimeout(() => {
+					audioWin.pause();
+				}, 1000); // Stop playing in 1 sec
 				/* 7. If the set any BAR, give 5$: */
-				if (resultString.includes('1')&& !resultString.includes('1,1,1')) {
+				if (resultString.includes('1') && !resultString.includes('1,1,1')) {
 					balanceNum = balanceNum + 5;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+5"; 
+					lastWin.innerHTML = "+5";
 
-						/* blink the background */
-						var interval = setInterval(function () {
+					/* blink the background */
+					var interval = setInterval(function () {
 						$(window).css("background-color", function () {
 							this.switch = !this.switch
 							return this.switch ? "red" : ""
@@ -279,8 +305,12 @@
 						clearInterval(interval);
 					} 					 // function to stop the animation interval 
 
-					setTimeout(() => { stopInterval();$(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
 				}
+				audioWin.play(); // Play winning sound
+				setTimeout(() => {
+					audioWin.pause();
+				}, 1000); // Stop playing in 1 sec
 
 
 
