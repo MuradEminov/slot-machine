@@ -245,7 +245,7 @@
 				}
 				/* 6. If the set is 3 BARs, give 10$: */
 				if (resultString == '[1,1,1]') {
-					balanceNum = balanceNum + 10;
+					balanceNum = balanceNum + 20;
 					balance.value = JSON.stringify(balanceNum);
 					lastWin.innerHTML = "+10"; 
 
@@ -263,7 +263,7 @@
 					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
 				}
 				/* 7. If the set any BAR, give 5$: */
-				if (resultString.includes('1')) {
+				if (resultString.includes('1')&& !resultString.includes('1,1,1')) {
 					balanceNum = balanceNum + 5;
 					balance.value = JSON.stringify(balanceNum);
 					lastWin.innerHTML = "+5"; 
