@@ -10,7 +10,7 @@ function EZSlots(id, useroptions) {
   this.width = options.width ? options.width : 100;
   this.height = options.width ? options.height : 100;
   this.time = options.time ? options.time * 1000 : 6500; //time in millis for a spin to take
-  this.howManySymbolsToAppend = Math.round(this.time / 325); //how many symbols each spin adds
+  this.howManySymbolsToAppend = Math.round(this.time / 30); //how many symbols each spin adds
   this.endingLocation = 7; //location for selected symbol... needs to be a few smaller than howManySymbolsToAppend
   this.jqo = $('#' + id); //jquery object reference to main wrapper
   this.jqoSliders = []; //jquery object reference to strips sliding up and down
@@ -99,7 +99,7 @@ function EZSlots(id, useroptions) {
       btnStatus.disabled = false;
       document.getElementById('spin-info-text').innerHTML = 'GO SPIN!';
       audio.pause();
-    }, 7000); // set Spin button disability duration (in millisecs)
+    }, 2000); // set S P I N button disability duration (in millisecs)
 
     /* End of Manage Spin button enabled/disabled status */
 

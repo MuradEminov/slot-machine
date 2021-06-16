@@ -41,6 +41,28 @@ i {
   color: rgb(211, 205, 172);
 }
 
+#winwinwin2 {
+  margin: 0;
+  height: 6rem;
+  width: 17rem;
+  border-radius: 45px 45px 45px 45px;
+  background-color: rgb(116, 130, 209);
+  border: 12px solid white;
+  font-family: 'Ultra', serif;
+  color: rgb(241, 239, 223);
+}
+
+#winwinwin2:hover {
+  background-color: rgb(183, 183, 189);
+  border: 12px solid gold;
+  cursor: pointer;
+}
+
+#winwinwin2:active {
+  background-color: rgb(202, 139, 128);
+  color: rgb(211, 205, 172);
+}
+
 .balance-area {
   margin-top: 10px;
   background-color: rgb(207, 182, 230);
@@ -70,10 +92,11 @@ i {
   height: 2rem;
   width: 20rem;
   outline: none;
-  direction: rtl;
+  direction: ltr;
   background-color: black;
   color: green;
   font-size: 2rem;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .navbar img {
@@ -125,4 +148,37 @@ i {
   font-size: 40px;
   font-family: arial, helvetica, sans-serif;
   border: 12px solid rgb(230, 226, 226);
+}
+
+#winBox {
+  color: gold;
+}
+
+.balance-box #box-2 {
+  height: 2rem;
+  width: 20rem;
+  border: 9px solid rgb(71, 95, 199);
+  background-color: rgb(48, 29, 29);
+  color: gold;
+  font-size: 2rem;
+  padding: 2px;
+  font-family: 'Ultra', serif;
+}
+
+.debugger-box {
+  height: 5rem;
+  border: 6px solid rgb(252, 248, 244);
+  background-color: rgb(236, 228, 228);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+}
+
+.debugger-box .container img {
+  height: 3rem;
+}
+.debugger-box .container img:hover {
+  cursor: pointer;
 }

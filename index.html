@@ -8,9 +8,14 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&family=Ultra&display=swap');
 	</style>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
+	</style>
 
 
 	<!-- HTML THAT RENDERS TO THE DOM -->
+
+	<!-- PAY TABLE -->
 	<div class="navbar">
 		<h1>PAY TABLE</h1> <i class="fas fa-star"></i>
 		<ul>
@@ -32,33 +37,96 @@
 					class="fas fa-dollar-sign"></i> </li>
 		</ul>
 	</div>
+	<!--End of PAY TABLE -->
+
+	<!-- SLOT INDICATOR  -->
 	<div class="slot-indicator">
 		<div id="ezslots2"></div>
 		<button id="gogogo2">
 			<h2>S P I N</h2>
 		</button>
-		<button id="winwinwin2">WIN</button>
+
 	</div>
 	<div class="info-box">
 		<i class="fas fa-arrow-up" style="color: green;"></i>
 		<h1 id="spin-info-text">GO SPIN!</h1>
 	</div>
+	<!-- End of SLOT INDICATOR  -->
 
-
+	<!-- BALANCE AREA -->
 	<div class="balance-area">
 		<div class="balance-box">
 			<div>
 				<p><i class="fas fa-coins"></i>BALANCE: </p>
 			</div>
-			<div id="box"><input id="balanceInput" type="number" max="5000" min="1" value="0" onchange="handleChange(this.value)"></div>
-		</div>
-	</div>
+			<div id="box"><input id="balanceInput" type="number" max="5000" min="1" value="0"
+					onchange="handleChange(this.value)"></div><i class="fas fa-dollar-sign"></i>
 
+			<div id="winBox" style="margin-left: 2rem;">
+				<p><i class="fas fa-trophy"></i>LAST WON: </p>
+			</div>
+			<div id="box-2">
+
+			</div><i class="fas fa-dollar-sign"></i>
+		</div>
+
+		<div class="debugger-box">
+			<p>SELECT AN IMAGE FOR FIXED WIN DEBUG:</p>
+			<div class="container">
+				<img src="./images/2xBAR.png" alt="2xBAR" onclick="setImgSrc('./images/2xBAR.png')">
+				<img src="./images/3xBAR.png" alt="3xBAR" onclick="setImgSrc('./images/3xBAR.png')">
+				<img src="./images/7.png" alt="Seven" onclick="setImgSrc('./images/7.png')">
+				<img src="./images/bar.png" alt="BAR" onclick="setImgSrc('./images/bar.png')">
+				<img src="./images/Cherry.png" alt="Cherry" onclick="setImgSrc('./images/Cherry.png')">
+			</div>
+			<p>SELECTION: </p>
+			<div id="selectionBox"></div>
+			<button id="winwinwin2">W I N</button>
+
+		</div>
+		
+			<p>Created by: <a href="https://www.murademinov.com"> Murad Eminov </a></p>
+		
+
+	</div>
+	<!-- End of BALANCE AREA -->
 	<!-- END OF HTML -->
 
-
-
 	<script>
+
+
+		/* HANDLE DEBUGGER FIXED WINS */
+
+		var img = document.createElement("img");
+		img.src = './images/Cherry.png'; // Default Image set for debugger winning mode  
+		document.getElementById('selectionBox').append(img);
+		var winArr = [4, 4, 4]; // The winning set array for debug spin option
+
+		function setImgSrc(src) {
+			img.src = src;
+			winSrc = src; // set new image source for debugge wins	 
+			
+			switch (winSrc) {
+				case ('./images/Cherry.png'):
+					winArr.splice(0, 3, 4, 4, 4); // Set Cherry combo as winning array set
+					break;
+				case ('./images/bar.png'):
+					winArr.splice(0, 3, 1, 1, 1); // Set Bar combo as winning array set
+					break;
+				case ('./images/7.png'):
+					winArr.splice(0, 3, 3, 3, 3); // Set Seven combo as winning array set
+					break;
+				case ('./images/3xBAR.png'):
+					winArr.splice(0, 3, 0, 0, 0); // Set 3XBAR combo as winning array set
+					break;
+				case ('./images/2xBAR.png'):
+					winArr.splice(0, 3, 2, 2, 2); // Set 2XBAR combo as winning array set
+					break;
+
+			}
+		}
+
+		/* End of HANDLE DEBUGGER FIXED WINS */
 
 		$(function () {
 
@@ -67,9 +135,194 @@
 			var images = ['<img src="images/3xBAR.png">', '<img src="images/bar.png">', '<img src="images/2xBAR.png">', '<img src="images/7.png">', '<img src="images/Cherry.png">'];
 			var misc = ['!', 'K', '*', '#', '@', '$'];
 			var callbackFunction = function (result) {
-				alert(JSON.stringify(result));
-				console.log(result);
+
+				var resultString = JSON.stringify(result); // results array as string
+				var lastWin = document.getElementById('box-2');
+				var balanceNum = +balance.value; // balance as numeric value
+				var window = document.querySelectorAll('div.window.window_');	// get the reeling box 		 
+				var winAudio = new Audio('../assets/audio/slot_machine_win.mp3'); // winning audio sound 
+				/* ---- Give respective amounts to the winning sets ---*/
+
+				/* 1. If the set is 3 Cherries, give 1000$: */
+				if (resultString == '[4,4,4]') {
+					balanceNum = balanceNum + 1000;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+1000";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays. 
+
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec
+
+				}
+				/* 2. If the set is 3 Sevens, give 75$: */
+				if (resultString == '[3,3,3]') {
+					balanceNum = balanceNum + 75;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+75";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec  
+				}
+				/* 3. If the set contains any Cherry and any Seven, give 75$: */
+				if ((resultString.includes('4')) && (resultString.includes('3'))) {
+					balanceNum = balanceNum + 75;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+75";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec
+				}
+
+
+				/* 4. If the set is 3 3XBARs, give 50$: */
+				if (resultString == '[0,0,0]') {
+					balanceNum = balanceNum + 50;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+50";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec
+				}
+
+				/* 5. If the set is 3 2XBARs, give 20$: */
+				if (resultString == '[2,2,2]') {
+					balanceNum = balanceNum + 20;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+20";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec
+				}
+
+				/* 6. If the set is 3 BARs, give 10$: */
+				if (resultString == '[1,1,1]') {
+					balanceNum = balanceNum + 20;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+10";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec
+				}
+
+				/* 7. If the set any BAR, give 5$: */
+				if (resultString.includes('1') && !resultString.includes('1,1,1')) {
+					balanceNum = balanceNum + 5;
+					balance.value = JSON.stringify(balanceNum);
+					lastWin.innerHTML = "+5";
+
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); $(window).css('background-color', 'rgb(200, 155, 243)') }, 1000); // duration how long blinking animation plays.
+					// Play win sound  
+					winAudio.play(); // Play winning sound
+					setTimeout(() => {
+						winAudio.pause();
+					}, 700); // Stop playing in 1 sec
+				}
+
+				 
+
 			}
+
 
 
 			//all parameters except id are optional
@@ -77,7 +330,7 @@
 			//simple numbers based one
 			var ezslot1 = new EZSlots("ezslots1", { "reelCount": 3, "startingSet": [0, 0, 0], "winningSet": [7, 7, 7], "symbols": numbers, "height": 126, "width": 126 });
 			//using images instead, and more reels
-			var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": [0, 0, 0, 0], "Time": 2, "symbols": images, "height": 126, "width": 126 });
+			var ezslot2 = new EZSlots("ezslots2", { "reelCount": 3, "winningSet": winArr, "time": 2, "symbols": images, "height": 126, "width": 126, "callback": callbackFunction });
 			//mixed types for each reel
 			var ezslot3 = new EZSlots("ezslots3", { "reelCount": 3, "winningSet": [0, 0, 0], "symbols": [numbers, images, misc], "height": 126, "width": 126, "callback": callbackFunction });
 			//simple numbers based one but takes longer to settle
@@ -87,7 +340,7 @@
 			$("#gogogo0").click(function () { console.log(ezslot0.spin()); });
 			$("#gogogo1").click(function () { console.log(ezslot1.spin()); });
 			$("#winwinwin1").click(function () { console.log(ezslot1.win()) });
-			$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <-Slot machine with Images
+			$("#gogogo2").click(function () { console.log(ezslot2.spin()); });// <-Slot machine with Images callback
 			$("#winwinwin2").click(function () { console.log(ezslot2.win()) });
 			$("#gogogo3").click(function () { console.log(ezslot3.spin()); });
 			$("#winwinwin3").click(function () { console.log(ezslot3.win()) });
@@ -95,13 +348,36 @@
 			$("#winwinwin4").click(function () { console.log(ezslot4.win()) });
 
 			/* HANDLE BALANCE RELATED ISSUES: */
+
+
+
 			var balance = document.querySelector('#balanceInput');
+<<<<<<< HEAD
 			if (balance.value <= 0) {
 				var spinBtn = document.getElementById('gogogo2');
 				var infoText = document.getElementById('spin-info-text');
+=======
+			var spinBtn = document.getElementById('gogogo2');
+			var infoText = document.getElementById('spin-info-text');
+			if (balance.value == 0) {
+
+>>>>>>> temp
 				spinBtn.disabled = true;
 				infoText.innerHTML = 'Please, insert money to start.';
 			}
+			// Spin button behavious based upon balance: 
+			// -1 coin for each spin roll: 
+
+			$("#gogogo2").click(function () {
+				// var balance = document.querySelector('#balanceInput');
+				if (balance.value == 0) {
+					spinBtn.disabled = true;
+					infoTexnerHTML = 'Please, insert money to stat.';
+				}
+				else { balance.value = balance.value - 1; }
+
+			});
+
 			/* End of HANDLE BALANCE RELATED ISSUES: */
 		});
 
