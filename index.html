@@ -142,7 +142,7 @@
 				var resultString = JSON.stringify(result); // results array as string
 				var lastWin = document.getElementById('box-2');
 				var balanceNum = +balance.value; // balance as numeric value
-
+				var window = document.querySelectorAll('div.window.window_');	// get the reeling box 		 
 
 				/* ---- Give respective amounts to the winning sets ---*/
 
@@ -151,44 +151,135 @@
 					balanceNum = balanceNum + 1000;
 					balance.value = JSON.stringify(balanceNum);
 					lastWin.innerHTML = "+1000";
+					
+					/* blink the background */
+					var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays. 
 
 				}
 				/* 2. If the set is 3 Sevens, give 75$: */
 				if (resultString == '[3,3,3]') {
 					balanceNum = balanceNum + 75;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+75";
+					lastWin.innerHTML = "+75"; 
+
+						/* blink the background */
+						var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays.
 
 				}
 				/* 3. If the set contains any Cherry and any Seven, give 75$: */
 				if ((resultString.includes('4')) && (resultString.includes('3'))) {
 					balanceNum = balanceNum + 75;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+75";
+					lastWin.innerHTML = "+75"; 
+
+						/* blink the background */
+						var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays.
 				}
 				/* 4. If the set is 3 3XBARs, give 50$: */
 				if (resultString == '[0,0,0]') {
 					balanceNum = balanceNum + 50;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+50";
+					lastWin.innerHTML = "+50"; 
+
+						/* blink the background */
+						var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays.
 				}
 				/* 5. If the set is 3 2XBARs, give 20$: */
 				if (resultString == '[2,2,2]') {
 					balanceNum = balanceNum + 20;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+20";
+					lastWin.innerHTML = "+20"; 
+
+						/* blink the background */
+						var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays.
 				}
 				/* 6. If the set is 3 BARs, give 10$: */
 				if (resultString == '[1,1,1]') {
 					balanceNum = balanceNum + 10;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+10";
+					lastWin.innerHTML = "+10"; 
+
+						/* blink the background */
+						var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays.
 				}
-				/* 6. If the set any BAR, give 5$: */
+				/* 7. If the set any BAR, give 5$: */
 				if (resultString.includes('1')) {
 					balanceNum = balanceNum + 5;
 					balance.value = JSON.stringify(balanceNum);
-					lastWin.innerHTML = "+5";
+					lastWin.innerHTML = "+5"; 
+
+						/* blink the background */
+						var interval = setInterval(function () {
+						$(window).css("background-color", function () {
+							this.switch = !this.switch
+							return this.switch ? "red" : ""
+						});
+					}, 100); // Set interval to play blinking animation spin reel window
+					function stopInterval() {
+						clearInterval(interval);
+					} 					 // function to stop the animation interval 
+
+					setTimeout(() => { stopInterval(); window.style.backgroundColor="rgb(200, 155, 243)" }, 1000); // duration how long blinking animation plays.
 				}
 
 
